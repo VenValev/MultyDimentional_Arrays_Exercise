@@ -12,15 +12,29 @@ namespace _03_MaxSum
             int cols = int.Parse(size[1]);
             int[,] mainMatrix = new int[rows, cols];
             int[,] wantedMatrix = new int[3, 3];
+            int maxSum = int.MinValue;
 
             FillingTheMatrix(mainMatrix, rows, cols);
 
-            FindingTheMatrix(mainMatrix, rows, cols, wantedMatrix);
+            maxSum = FindingTheMatrix(mainMatrix, rows, cols, wantedMatrix, maxSum);
+
+            
+            Console.WriteLine($"{maxSum}");
+
+            for(int r = 0; r < 3; r++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    Console.Write($"{wantedMatrix[r, c]} ");
+                }
+                Console.WriteLine();
+            }
+                
         }
 
-        private static void FindingTheMatrix(int[,] mainMatrix, int rows, int cols, int[,] wantedMatrix)
+        private static int FindingTheMatrix(int[,] mainMatrix, int rows, int cols, int[,] wantedMatrix, int maxSum)
         {
-            int maxSum = int.MinValue;
+            
             for(int i=0; i < rows - 3; i++)
             {
                 for(int j=0; j < cols - 3; j++)
@@ -39,13 +53,14 @@ namespace _03_MaxSum
                     }
                 }
             }
+            return maxSum;
         }
 
         private static void FillingWantedMatrix(int[,] mainMatrix, int i, int j, int[,] wantedMatrix)
         {
             for (int r = 0; r < 3; r++)
             {
-                for (int c = 0; c < 3, c++)
+                for (int c = 0; c < 3; c++)
                 {
                     wantedMatrix[r,c] = mainMatrix[r + i, c + j];
                 }
@@ -56,7 +71,7 @@ namespace _03_MaxSum
         {
             for(int r = 0; r < 3; r++)
             {
-                for(int c = 0; c < 3, c++)
+                for(int c = 0; c < 3; c++)
                 {
                     sum += mainMatrix[r + i, c + j];
                 }
