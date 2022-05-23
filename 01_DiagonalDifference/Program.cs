@@ -16,6 +16,18 @@ namespace _01_DiagonalDifference
 
             SummingThePrimaryDiagonal(matrix, sumPrimaryDiagonal);
 
+            SummingTheSecondaryDiagonal(matrix, sumSecondaryDiagonal);
+
+            Console.WriteLine(Math.Abs(sumPrimaryDiagonal - sumSecondaryDiagonal));
+
+        }
+
+        private static void SummingTheSecondaryDiagonal(int[,] matrix, int sumSecondaryDiagonal)
+        {
+            for (int c = 0, r = matrix.Length - 1; c < matrix.Length && r >= 0; c++, r--)
+            {
+                sumSecondaryDiagonal += matrix[r, c];
+            }
         }
 
         private static void SummingThePrimaryDiagonal(int[,] matrix, int sumPrimaryDiagonal)
