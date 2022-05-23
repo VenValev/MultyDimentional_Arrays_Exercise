@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace _01_DiagonalDifference
 {
@@ -8,6 +9,26 @@ namespace _01_DiagonalDifference
         {
             int sizeOfArray = int.Parse(Console.ReadLine());
             int[,] matrix = new int[sizeOfArray, sizeOfArray];
+            int sumPrimaryDiagonal = 0;
+            int sumSecondaryDiagonal = 0;
+
+            FillingTheMatrix(matrix, sizeOfArray);
+        }
+
+        static void FillingTheMatrix(int[,] matrix, int sizeOfArray)
+        {
+            for (int r = 0; r < sizeOfArray; r++)
+            {
+                int[] row = Console.ReadLine()
+                    .Split(' ')
+                    .Select(int.Parse)
+                    .ToArray();
+
+                for (int c = 0; c < sizeOfArray; c++)
+                {
+                    matrix[r, c] = row[c];
+                }
+            }
         }
     }
 }
