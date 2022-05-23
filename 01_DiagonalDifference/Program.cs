@@ -14,28 +14,30 @@ namespace _01_DiagonalDifference
 
             FillingTheMatrix(matrix, sizeOfArray);
 
-            SummingThePrimaryDiagonal(matrix, sumPrimaryDiagonal);
+            sumPrimaryDiagonal = SummingThePrimaryDiagonal(matrix, sumPrimaryDiagonal, sizeOfArray);
 
-            SummingTheSecondaryDiagonal(matrix, sumSecondaryDiagonal);
+            sumSecondaryDiagonal = SummingTheSecondaryDiagonal(matrix, sumSecondaryDiagonal, sizeOfArray);
 
             Console.WriteLine(Math.Abs(sumPrimaryDiagonal - sumSecondaryDiagonal));
 
         }
 
-        private static void SummingTheSecondaryDiagonal(int[,] matrix, int sumSecondaryDiagonal)
+        static int SummingTheSecondaryDiagonal(int[,] matrix, int sumSecondaryDiagonal, int sizeOfArray)
         {
-            for (int c = 0, r = matrix.Length - 1; c < matrix.Length && r >= 0; c++, r--)
+            for (int c = 0, r = sizeOfArray - 1; c < matrix.Length && r >= 0; c++, r--)
             {
                 sumSecondaryDiagonal += matrix[r, c];
             }
+            return sumSecondaryDiagonal;
         }
 
-        private static void SummingThePrimaryDiagonal(int[,] matrix, int sumPrimaryDiagonal)
+        static int SummingThePrimaryDiagonal(int[,] matrix, int sumPrimaryDiagonal, int sizeOfArray)
         {
-            for(int cr = 0; cr < matrix.Length; cr++)
+            for(int cr = 0; cr < sizeOfArray; cr++)
             {
                 sumPrimaryDiagonal += matrix[cr,cr];
             }
+            return sumPrimaryDiagonal;
         }
 
         static void FillingTheMatrix(int[,] matrix, int sizeOfArray)
