@@ -16,18 +16,29 @@ namespace _02_HandsInBlueSquaresInMatrix
 
             FillMatrix(matrix, rows, cols);
 
-            SearchingTheMatrix(matrix, rows, cols, br);
+            br = SearchingTheMatrix(matrix, rows, cols, br);
+
+            Console.WriteLine(br);
         }
 
-        private static void SearchingTheMatrix(string[,] matrix, int rows, int cols, int br)
+        private static int SearchingTheMatrix(string[,] matrix, int rows, int cols, int br)
         {
             for(int r = 0; r < rows-1; r++)
             {
                 for(int c = 0; c < cols-1; c++)
                 {
+                    string s1 = matrix[r, c];
+                    string s2 = matrix[r, c + 1];
+                    string s3 = matrix[r + 1, c];
+                    string s4 = matrix[r + 1, c + 1];
 
+                    if(s1 == s2 && s1 == s3 && s1 == s4)
+                    {
+                        br++;
+                    }
                 }
             }
+            return br;
         }
 
         private static void FillMatrix(string[,] matrix, int rows, int cols)
