@@ -19,7 +19,7 @@ namespace _03_MaxSum
             maxSum = FindingTheMatrix(mainMatrix, rows, cols, wantedMatrix, maxSum);
 
             
-            Console.WriteLine($"{maxSum}");
+            Console.WriteLine($"Sum = {maxSum}");
 
             for(int r = 0; r < 3; r++)
             {
@@ -35,9 +35,9 @@ namespace _03_MaxSum
         private static int FindingTheMatrix(int[,] mainMatrix, int rows, int cols, int[,] wantedMatrix, int maxSum)
         {
             
-            for(int i=0; i < rows - 3; i++)
+            for(int i=0; i <= rows - 3; i++)
             {
-                for(int j=0; j < cols - 3; j++)
+                for(int j=0; j <= cols - 3; j++)
                 {
                     /*int sum = 
                         mainMatrix[i, j] + mainMatrix[i,j+1] + mainMatrix[i, j+2] +
