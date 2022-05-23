@@ -10,17 +10,31 @@ namespace _02_HandsInBlueSquaresInMatrix
             string[] size = Console.ReadLine().Split(' ');
             int rows = int.Parse(size[0]);
             int cols = int.Parse(size[1]);
+            int br = 0;
 
-            char[,] matrix = new char[rows, cols];
+            string[,] matrix = new string[rows, cols];
 
             FillMatrix(matrix, rows, cols);
+
+            SearchingTheMatrix(matrix, rows, cols, br);
         }
 
-        private static void FillMatrix(char[,] matrix, int rows, int cols)
+        private static void SearchingTheMatrix(string[,] matrix, int rows, int cols, int br)
+        {
+            for(int r = 0; r < rows-1; r++)
+            {
+                for(int c = 0; c < cols-1; c++)
+                {
+
+                }
+            }
+        }
+
+        private static void FillMatrix(string[,] matrix, int rows, int cols)
         {
             for (int r = 0; r < rows; r++)
             {
-                char[] row = Console.ReadLine().ToCharArray(); ;
+                string[] row = Console.ReadLine().Split(' '); 
 
                 for (int c = 0; c < cols; c++)
                 {
