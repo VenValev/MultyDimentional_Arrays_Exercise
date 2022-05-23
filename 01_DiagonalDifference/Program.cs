@@ -13,6 +13,17 @@ namespace _01_DiagonalDifference
             int sumSecondaryDiagonal = 0;
 
             FillingTheMatrix(matrix, sizeOfArray);
+
+            SummingThePrimaryDiagonal(matrix, sumPrimaryDiagonal);
+
+        }
+
+        private static void SummingThePrimaryDiagonal(int[,] matrix, int sumPrimaryDiagonal)
+        {
+            for(int cr = 0; cr < matrix.Length; cr++)
+            {
+                sumPrimaryDiagonal += matrix[cr,cr];
+            }
         }
 
         static void FillingTheMatrix(int[,] matrix, int sizeOfArray)
