@@ -6,7 +6,8 @@ namespace _01_DiagonalDifference
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int sizeOfArray = int.Parse(Console.ReadLine());
+            int[,] matrix = new int[sizeOfArray, sizeOfArray];
         }
     }
 }
