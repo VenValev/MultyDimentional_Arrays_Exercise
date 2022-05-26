@@ -13,33 +13,49 @@ namespace _05_SnakeMoves
             string snake = Console.ReadLine();
             int index = 0;
 
-            for (int r = 0; r < cols; r++)
+            for (int r = 0; r < rows; r++)
             {
                 
                 if(r % 2 == 1)
                 {
                     for(int c = cols-1; c >=0; c--)
                     {
-                        matrix[r, c] = snake[index].ToString();
-                        index++;
-                        if(index >= snake.Length)
+                        if (index >= snake.Length)
                         {
                             index = 0;
                         }
+                        matrix[r, c] = snake[index].ToString();
+                        index++;
+                        
                     }
                 }
                 else
                 {
                     for (int c = 0; c < cols; c++)
                     {
-                        matrix[r, c] = snake[index].ToString();
-                        index++;
                         if (index >= snake.Length)
                         {
                             index = 0;
                         }
+                        matrix[r, c] = snake[index].ToString();
+                        index++;
+                        
                     }
                 }
+            }
+
+            PrintMatrix(matrix, rows, cols);
+        }
+
+        private static void PrintMatrix(string[,] matrix, int rows, int cols)
+        {
+            for(int r = 0; r < rows; r ++)
+            {
+                for(int c = 0; c < cols; c++)
+                {
+                    Console.Write($"{matrix[r, c]}");
+                }
+                Console.WriteLine();
             }
         }
     }
