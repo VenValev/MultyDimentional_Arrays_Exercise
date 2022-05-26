@@ -25,8 +25,10 @@ namespace _04_MatrixShiffling
                     int fcol = int.Parse(cmndArg[2]);
                     int srow = int.Parse(cmndArg[3]);
                     int scol = int.Parse(cmndArg[4]);
+
                     string firstItem = matrix[frow, fcol];
                     string secondItem = matrix[srow, scol];
+
                     matrix[frow, fcol] = secondItem;
                     matrix[srow, scol] = firstItem;
 
@@ -53,7 +55,7 @@ namespace _04_MatrixShiffling
 
         private static bool CommandValidation(string[,] matrix, int rows, int cols, string[] cmndArg)
         {
-            if (cmndArg[0] != "swap" && cmndArg.Length!=5)
+            if (cmndArg[0] != "swap" || cmndArg.Length!=5)
             {
                 return false;
             }
@@ -83,7 +85,12 @@ namespace _04_MatrixShiffling
             }
         }
 
-        private static bool ValidCoordinates(int firstNumberRow, int firstNumberCol, int secondNumberRow, int secindNumberCol, int rows, int cols)
+        private static bool ValidCoordinates(int firstNumberRow, 
+            int firstNumberCol, 
+            int secondNumberRow, 
+            int secindNumberCol, 
+            int rows, 
+            int cols)
         {
             if(firstNumberRow >= rows || 
                 firstNumberCol >= cols || 
@@ -103,7 +110,10 @@ namespace _04_MatrixShiffling
             int secondNumberRow,
             int secindNumberCol)
         {
-            if(firstNumberRow >= 0 && firstNumberCol >= 0 && secondNumberRow >= 0 && secindNumberCol >= 0)
+            if(firstNumberRow >= 0 && 
+                firstNumberCol >= 0 && 
+                secondNumberRow >= 0 && 
+                secindNumberCol >= 0)
             {
                 return true;
             }
