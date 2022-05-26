@@ -32,6 +32,7 @@ namespace _07_TheKnightGame
                         else
                         {
                             br++;
+                            //board[r, c] = "0";
                         }
                     }
                 }
@@ -43,7 +44,7 @@ namespace _07_TheKnightGame
         {
             int[] rowMove = { 2, 1, -1, -2, -2, -1,  1,  2 };
             int[] colMove = { 1, 2,  2,  1, -1, -2, -2, -1 };
-            for(int i = 0; i < n; i++)
+            for(int i = 0; i < 8; i++)
             {
                 if (r + rowMove[i] < 0 || c + colMove[i] < 0)
                 {
@@ -53,8 +54,9 @@ namespace _07_TheKnightGame
                 {
                     continue;
                 }
-                else if (board[rowMove[i], colMove[i]] == "K")
+                else if (board[r+rowMove[i], c+colMove[i]] == "K")
                 {
+                    board[r + rowMove[i], c + colMove[i]] = "0";
                     return false;
                 }
             }
