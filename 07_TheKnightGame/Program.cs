@@ -7,7 +7,18 @@ namespace _07_TheKnightGame
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            int[,] board = new int[n, n];
+            string[,] board = new string[n,n];
+
+            for(int r = 0; r < n; r++)
+            {
+                string[] s = Console.ReadLine().Split();
+                for(int c = 0; c < n; c++)
+                {
+                    board[r,c] = s[c];
+                }
+
+
+            }
         }
     }
 }
