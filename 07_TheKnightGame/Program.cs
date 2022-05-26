@@ -53,8 +53,12 @@ namespace _07_TheKnightGame
                 {
                     continue;
                 }
-
+                else if (board[rowMove[i], colMove[i]] == "K")
+                {
+                    return false;
+                }
             }
+            return true;
 
             /*if (board[r-2, c-1] != "K" &&
                 board[r-2, c+1] != "K" &&
