@@ -6,7 +6,10 @@ namespace _04_MatrixShiffling
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] demetions = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            int rows = int.Parse(demetions[0]);
+            int cols = int.Parse(demetions[1]);
+            string[,] matrix = new string[rows, cols];
         }
     }
 }
