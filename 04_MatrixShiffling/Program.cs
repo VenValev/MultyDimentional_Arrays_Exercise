@@ -21,8 +21,29 @@ namespace _04_MatrixShiffling
 
                 if(CommandValidation(matrix,rows,cols,cmndArg))
                 {
+                    string firstItem = matrix[cmnd[1], cmnd[2]];
+                    string secondItem = matrix[cmnd[3], cmnd[4]];
+                    matrix[cmnd[1], cmnd[2]] = secondItem;
+                    matrix[cmnd[3], cmnd[4]] = firstItem;
 
+                    PrintMatrix(matrix, rows, cols);
                 }
+                else
+                {
+                    Console.WriteLine("Invalid input!");
+                }
+            }
+        }
+
+        private static void PrintMatrix(string[,] matrix, int rows, int cols)
+        {
+            for(int r = 0; r < rows; r ++)
+            {
+                for(int c = 0; c < cols; c ++)
+                {
+                    Console.Write($"{matrix[r, c]} ");
+                }
+                Console.WriteLine();
             }
         }
 
@@ -78,7 +99,7 @@ namespace _04_MatrixShiffling
             int secondNumberRow,
             int secindNumberCol)
         {
-            if(firstNumberRow > 0 && firstNumberCol > 0 && secondNumberRow > 0 && secindNumberCol > 0)
+            if(firstNumberRow >= 0 && firstNumberCol >= 0 && secondNumberRow >= 0 && secindNumberCol >= 0)
             {
                 return true;
             }
