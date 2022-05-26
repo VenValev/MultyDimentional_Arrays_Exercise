@@ -25,7 +25,8 @@ namespace _07_TheKnightGame
                 {
                     if (board[r, c] == "K")
                     {
-                        if(ChekIfThereIsKnight(board, n, br, r, c))
+                        br = ChekIfThereIsKnight(board, n, br, r, c);
+                        /*if(ChekIfThereIsKnight(board, n, br, r, c))
                         {
                             continue;
                         }
@@ -33,14 +34,14 @@ namespace _07_TheKnightGame
                         {
                             br++;
                             //board[r, c] = "0";
-                        }
+                        }*/
                     }
                 }
             }
             return br;
         }
 
-        private static bool ChekIfThereIsKnight(string[,] board, int n, int br, int r, int c)
+        private static int ChekIfThereIsKnight(string[,] board, int n, int br, int r, int c)
         {
             int[] rowMove = { 2, 1, -1, -2, -2, -1,  1,  2 };
             int[] colMove = { 1, 2,  2,  1, -1, -2, -2, -1 };
@@ -57,10 +58,10 @@ namespace _07_TheKnightGame
                 else if (board[r+rowMove[i], c+colMove[i]] == "K")
                 {
                     board[r + rowMove[i], c + colMove[i]] = "0";
-                    return false;
+                    br++;
                 }
             }
-            return true;
+            return br;
 
             /*if (board[r-2, c-1] != "K" &&
                 board[r-2, c+1] != "K" &&
