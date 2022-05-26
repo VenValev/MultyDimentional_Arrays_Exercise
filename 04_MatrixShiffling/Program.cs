@@ -34,7 +34,57 @@ namespace _04_MatrixShiffling
             }
             else
             {
+                int firstNumberRow = int.Parse(cmndArg[1]);
+                int firstNumberCol = int.Parse(cmndArg[2]);
+                int secondNumberRow = int.Parse(cmndArg[3]);
+                int secindNumberCol = int.Parse(cmndArg[4]);
 
+                if (CoordinatesBiggerThanZero(firstNumberRow,
+                    firstNumberCol,
+                    secondNumberRow,
+                    secindNumberCol)
+                    &&
+                    ValidCoordinates(firstNumberRow,
+                    firstNumberCol,
+                    secondNumberRow,
+                    secindNumberCol, rows, cols))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        private static bool ValidCoordinates(int firstNumberRow, int firstNumberCol, int secondNumberRow, int secindNumberCol, int rows, int cols)
+        {
+            if(firstNumberRow >= rows || 
+                firstNumberCol >= cols || 
+                secondNumberRow >= rows || 
+                secindNumberCol >=cols)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private static bool CoordinatesBiggerThanZero(int firstNumberRow,
+            int firstNumberCol,
+            int secondNumberRow,
+            int secindNumberCol)
+        {
+            if(firstNumberRow > 0 && firstNumberCol > 0 && secondNumberRow > 0 && secindNumberCol > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
