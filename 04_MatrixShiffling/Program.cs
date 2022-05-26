@@ -21,10 +21,14 @@ namespace _04_MatrixShiffling
 
                 if(CommandValidation(matrix,rows,cols,cmndArg))
                 {
-                    string firstItem = matrix[cmnd[1], cmnd[2]];
-                    string secondItem = matrix[cmnd[3], cmnd[4]];
-                    matrix[cmnd[1], cmnd[2]] = secondItem;
-                    matrix[cmnd[3], cmnd[4]] = firstItem;
+                    int frow = int. Parse(cmndArg[1]);
+                    int fcol = int.Parse(cmndArg[2]);
+                    int srow = int.Parse(cmndArg[3]);
+                    int scol = int.Parse(cmndArg[4]);
+                    string firstItem = matrix[frow, fcol];
+                    string secondItem = matrix[srow, scol];
+                    matrix[frow, fcol] = secondItem;
+                    matrix[srow, scol] = firstItem;
 
                     PrintMatrix(matrix, rows, cols);
                 }
@@ -49,7 +53,7 @@ namespace _04_MatrixShiffling
 
         private static bool CommandValidation(string[,] matrix, int rows, int cols, string[] cmndArg)
         {
-            if (cmndArg[0] != "swap" && cmndArg.Length<5)
+            if (cmndArg[0] != "swap" && cmndArg.Length!=5)
             {
                 return false;
             }
