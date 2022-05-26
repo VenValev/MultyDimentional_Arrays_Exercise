@@ -35,9 +35,9 @@ namespace _03_MaxSum
         private static int FindingTheMatrix(int[,] mainMatrix, int rows, int cols, int[,] wantedMatrix, int maxSum)
         {
             
-            for(int i=0; i <= rows - 3; i++)
+            for(int i=0; i < rows - 2; i++)
             {
-                for(int j=0; j <= cols - 3; j++)
+                for(int j=0; j < cols - 2; j++)
                 {
                     /*int sum = 
                         mainMatrix[i, j] + mainMatrix[i,j+1] + mainMatrix[i, j+2] +
@@ -84,7 +84,7 @@ namespace _03_MaxSum
             for (int r = 0; r < rows; r++)
             {
                 int[] row = Console.ReadLine()
-                    .Split(' ')
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse)
                     .ToArray();
 
