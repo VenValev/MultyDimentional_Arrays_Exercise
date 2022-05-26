@@ -12,6 +12,30 @@ namespace _04_MatrixShiffling
             string[,] matrix = new string[rows, cols];
 
             FillingTheMatrix(matrix, rows, cols);
+
+            string cmnd;
+
+            while((cmnd = Console.ReadLine()) != "END")
+            {
+                string[] cmndArg = cmnd.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                if(CommandValidation(matrix,rows,cols,cmndArg))
+                {
+
+                }
+            }
+        }
+
+        private static bool CommandValidation(string[,] matrix, int rows, int cols, string[] cmndArg)
+        {
+            if (cmndArg[0] != "swap" && cmndArg.Length<5)
+            {
+                return false;
+            }
+            else
+            {
+
+            }
         }
 
         private static void FillingTheMatrix(string[,] matrix, int rows, int cols)
