@@ -34,14 +34,14 @@ namespace _08_Bombs
             {
                 for (int c = 0; c < matrix.GetLength(1); c++)
                 {
-                    if (matrix[r, c] > 0)
+                    if (matrix[r, c] >= 0)
                     {
                         sumOfLiveCells += matrix[r,c];
                     }
                 }
             }
 
-            Console.WriteLine(sumOfLiveCells);
+            Console.WriteLine($"Sum: {sumOfLiveCells}");
         }
 
         static void FindingLiveCells(int[,] matrix)
@@ -59,7 +59,7 @@ namespace _08_Bombs
                 }
             }
 
-            Console.WriteLine(liveCellsLeft);
+            Console.WriteLine($"Alive cells: {liveCellsLeft}");
         }
 
 
@@ -95,14 +95,18 @@ namespace _08_Bombs
                 int cxB = bombCoordinates[i].Item1;
                 int cyB = bombCoordinates[i].Item2;
                 int bomb = matrix[cxB, cyB];
-                int[] x = { 1, 0, -1, -1, -1, 0, 1, 1 };
-                int[] y = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                int[] x = { 1, 0, -1, -1, -1,  0,  1, 1 };
+                int[] y = { 1, 1,  1,  0, -1, -1, -1, 0 };
+
                 for(int j = 0; j < x.Length; j++)
                 {
                     try
                     {
                         if(matrix[cxB + x[j], cyB + y[j]] > 0)
+                        {
                             matrix[cxB + x[j], cyB + y[j]] -= bomb;
+                        }
+                            
                     }
                     catch (Exception)
                     {
