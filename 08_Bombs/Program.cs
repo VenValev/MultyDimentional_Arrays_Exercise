@@ -34,8 +34,22 @@ namespace _08_Bombs
 
         private static void ActivatingExplosions(int[,] matrix, int n, string[] line, List<Tuple<int, int>> bombCoordinates)
         {
-            
-            
+            for(int i = 0; i < bombCoordinates.Count; i++)
+            {
+                int cxB = bombCoordinates[i].Item1;
+                int cyB = bombCoordinates[i].Item2;
+                int bomb = matrix[cxB, cyB];
+                int[] x = { 1, 0, -1, -1, -1, 0, 1, 1 };
+                int[] y = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                try
+                {
+
+                }
+                catch
+                {
+                    continue;
+                }
+            }
         }
 
         private static void FillingTheMatrix(int[,] matrix, int n)
