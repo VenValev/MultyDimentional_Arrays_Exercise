@@ -18,6 +18,20 @@ namespace _08_Bombs
 
             ActivatingExplosions(matrix, n, line, bombCoordinates);
 
+            PrintTheMatrix(matrix, n);
+
+        }
+
+        private static void PrintTheMatrix(int[,] matrix, int n)
+        {
+            for(int r = 0; r < n; r++)
+            {
+                for(int c = 0; c < n; c++)
+                {
+                    Console.Write($"{matrix[r, c]} ");
+                }
+                Console.WriteLine();
+            }
         }
 
         private static void FillingCoordinates(string[] line, List<Tuple<int, int>> bombCoordinates)
@@ -41,14 +55,18 @@ namespace _08_Bombs
                 int bomb = matrix[cxB, cyB];
                 int[] x = { 1, 0, -1, -1, -1, 0, 1, 1 };
                 int[] y = { 1, 1, 1, 0, -1, -1, -1, 0 };
-                try
+                for(int j = 0; j < x.Length; j++)
                 {
-
+                    try
+                    {
+                        matrix[cxB + x[j], cyB + y[j]] -= bomb;
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
                 }
-                catch
-                {
-                    continue;
-                }
+                matrix[cxB, cyB] = 0;
             }
         }
 
