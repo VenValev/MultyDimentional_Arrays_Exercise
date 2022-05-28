@@ -21,8 +21,27 @@ namespace _08_Bombs
             ActivatingExplosions(matrix, n, line, bombCoordinates);
 
             FindingLiveCells(matrix);
+            FindingSumOfCells(matrix);
 
             PrintTheMatrix(matrix, n);
+        }
+
+        private static void FindingSumOfCells(int[,] matrix)
+        {
+            int sumOfLiveCells = 0;
+
+            for (int r = 0; r < matrix.GetLength(0); r++)
+            {
+                for (int c = 0; c < matrix.GetLength(1); c++)
+                {
+                    if (matrix[r, c] > 0)
+                    {
+                        sumOfLiveCells += matrix[r,c];
+                    }
+                }
+            }
+
+            Console.WriteLine(sumOfLiveCells);
         }
 
         static void FindingLiveCells(int[,] matrix)
@@ -42,6 +61,8 @@ namespace _08_Bombs
 
             Console.WriteLine(liveCellsLeft);
         }
+
+
 
         private static void PrintTheMatrix(int[,] matrix, int n)
         {
