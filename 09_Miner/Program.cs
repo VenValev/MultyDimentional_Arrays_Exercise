@@ -6,7 +6,8 @@ namespace _09_Miner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int n = int.Parse(Console.ReadLine());
+            string[,] matrix = new string[n, n];
         }
     }
 }
