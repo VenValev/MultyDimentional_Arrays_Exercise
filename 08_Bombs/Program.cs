@@ -9,18 +9,38 @@ namespace _08_Bombs
         {
             int n = int.Parse(Console.ReadLine());
             int[,] matrix = new int[n, n];
+            
 
             FillingTheMatrix(matrix, n);
 
             string[] line = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             List<Tuple<int, int>> bombCoordinates = new List<Tuple<int, int>>();
+
             FillingCoordinates(line, bombCoordinates);
 
             ActivatingExplosions(matrix, n, line, bombCoordinates);
 
+            FindingLiveCells(matrix);
 
             PrintTheMatrix(matrix, n);
+        }
 
+        void FindingLiveCells(int[,] matrix)
+        {
+            int liveCellsLeft = 0;
+
+            for(int r = 0; r < matrix.GetLength(0); r++)
+            {
+                for(int c = 0; c < matrix.GetLength(1); c++)
+                {
+                    if (matrix[r,c] > 0)
+                    {
+                        liveCellsLeft++;
+                    }
+                }
+            }
+
+            Console.WriteLine(liveCellsLeft);
         }
 
         private static void PrintTheMatrix(int[,] matrix, int n)
