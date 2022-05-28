@@ -25,6 +25,7 @@ namespace _07_KnightGame_2
                     matrix[row, col] = colEl[col];
                 }
             }
+
             while (MaxValue(matrix, matrixDictionary, n) > 0)
             {
                 string[] coordinates = CoordinatesForRemovingTheKnight(matrixDictionary);
