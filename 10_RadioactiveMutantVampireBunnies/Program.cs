@@ -18,7 +18,34 @@ namespace _10_RadioactiveMutantVampireBunnies
             Tuple<int, int> startPosition = new Tuple<int, int>(0, 0);
             startPosition = FindingStartPosition(matrix, matrixSize, startPosition);
 
+            PlayGame(matrix, startPosition);
+        }
 
+        private static void PlayGame(string[,] matrix, Tuple<int, int> startPosition)
+        {
+            int currRow = startPosition.Item1;
+            int currCol = startPosition.Item2;
+            string[] commands = Console.ReadLine().Split();
+
+            for(int i = 0; i < commands.Length; i++)
+            {
+                if (commands[i] == "L")
+                {
+                    
+                }
+                else if (commands[i] == "R")
+                {
+
+                }
+                else if (commands[i] == "U")
+                {
+
+                }
+                else if (commands[i] == "D")
+                {
+
+                }
+            }
         }
 
         private static Tuple<int, int> FindingStartPosition(string[,] matrix, int[] matrixSize, Tuple<int, int> startPosition)
