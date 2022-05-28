@@ -11,37 +11,74 @@ namespace _09_Miner
             int colloectedCoal = 0;
             string[] cmnd = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             Tuple<int, int> startPosition = new Tuple<int, int>(0, 0);
+            Tuple<int, int> endPosition = new Tuple<int, int>(0, 0);
 
-            startPosition = FillingTheMatrix(matrix, n, startPosition);
+            FillingMatrix(matrix, n);
+
+            startPosition = FindingStartPosition(matrix, n, startPosition);
+            endPosition = FindingEndPossition(matrix, n, endPosition);
 
             PlayGame(n, matrix, colloectedCoal, cmnd, startPosition);
         }
 
+        private static Tuple<int, int> FindingStartPosition(string[,] matrix, int n, Tuple<int, int> startPosition)
+        {
+            for (int r = 0; r < n; r++)
+            {
+                for (int c = 0; c < n; c++)
+                {
+                    if(matrix[r,c] == "s")
+                    {
+                        Tuple<int, int> sp = new Tuple<int, int>(r, c);
+                        startPosition = sp;
+                    }
+                }
+            }
+            return startPosition;
+        }
+
+        private static Tuple<int, int> FindingEndPossition(string[,] matrix, int n, Tuple<int, int> endPosition)
+        {
+            for (int r = 0; r < n; r++)
+            {
+                for (int c = 0; c < n; c++)
+                {
+                    if (matrix[r, c] == "e")
+                    {
+                        Tuple<int, int> ep = new Tuple<int, int>(r, c);
+                        endPosition = ep;
+                    }
+                }
+            }
+            return endPosition;
+        }
+
         private static void PlayGame(int n, string[,] matrix, int colloectedCoal, string[] cmnd, Tuple<int, int> startPosition)
         {
+            Tuple<int, int> currentPossition = startPosition;
             for(int i = 0; i < cmnd.Length; i++)
             {
                 
-                if (cmnd[i] == "left")
+                if (cmnd[i] == "left" && currentPossition.Item2 - 1 >= 0)
+                {
+                    
+                }
+                else if(cmnd[i] == "right" && currentPossition.Item2 + 1 < n)
                 {
 
                 }
-                else if(cmnd[i] == "right")
+                else if (cmnd[i] == "up" && currentPossition.Item1 - 1 >= 0)
                 {
 
                 }
-                else if (cmnd[i] == "up")
-                {
-
-                }
-                else if (cmnd[i] == "down")
+                else if (cmnd[i] == "down" && currentPossition.Item2 + 1 < n)
                 {
 
                 }
             }
         }
 
-        static Tuple<int, int> FillingTheMatrix(string[,] matrix, int n, Tuple<int, int> startPosition)
+        static void FillingMatrix(string[,] matrix, int n)
         {
             
             for(int r = 0; r < n; r++)
@@ -51,15 +88,8 @@ namespace _09_Miner
                 for(int c = 0; c < n; c++)
                 {
                     matrix[r, c] = line[c];
-                    if (line[c] == "s")
-                    {
-                        Tuple<int, int> sp = new Tuple<int, int>(r, c);
-                        startPosition = sp;
-                        
-                    }
                 }
             }
-            return startPosition;
         }
     }
 }
