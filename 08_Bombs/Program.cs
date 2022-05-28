@@ -18,6 +18,7 @@ namespace _08_Bombs
 
             ActivatingExplosions(matrix, n, line, bombCoordinates);
 
+
             PrintTheMatrix(matrix, n);
 
         }
@@ -59,7 +60,8 @@ namespace _08_Bombs
                 {
                     try
                     {
-                        matrix[cxB + x[j], cyB + y[j]] -= bomb;
+                        if(matrix[cxB + x[j], cyB + y[j]] > 0)
+                            matrix[cxB + x[j], cyB + y[j]] -= bomb;
                     }
                     catch (Exception)
                     {
