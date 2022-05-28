@@ -25,7 +25,7 @@ namespace _08_Bombs
             PrintTheMatrix(matrix, n);
         }
 
-        void FindingLiveCells(int[,] matrix)
+        static void FindingLiveCells(int[,] matrix)
         {
             int liveCellsLeft = 0;
 
