@@ -58,6 +58,7 @@ namespace _10_RadioactiveMutantVampireBunnies
         private static bool BunniesGotPlayer(string[,] matrix, int currRow, int currCol)
         {
             Queue<Tuple<int, int>> bunniesLocation = new Queue<Tuple<int, int>>();
+
             for(int r = 0; r < matrix.GetLength(0); r++)
             {
                 for(int c = 0; c < matrix.GetLength(1); c++)
@@ -71,8 +72,24 @@ namespace _10_RadioactiveMutantVampireBunnies
 
             for(int i = 0; i < bunniesLocation.Count; i++)
             {
+                int[] nextBRow = {1, 0,-1, 0};
+                int[] nextBCol = {0, 1, 0,-1};
                 int bRow = bunniesLocation.Peek().Item1;
                 int bCol = bunniesLocation.Peek().Item2;
+                if(currRow == bRow && currCol == bCol)
+                {
+                    return true;
+                }
+                else
+                {
+                    for(int j = 0; j < nextBCol.Length; j++)
+                    {
+                        if (bRow + nextBRow[j] == currRow && bCol + nextBCol[j] == currCol)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
         }
 
