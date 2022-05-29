@@ -51,6 +51,8 @@ namespace _10_RadioactiveMutantVampireBunnies
                 if(BunniesGotPlayer(matrix, currRow, currCol))
                 {
                     PrintMatrix(matrix);
+                    Console.WriteLine($"dead: {currRow} {currRow}");
+                    break;
                 }
             }
         }
