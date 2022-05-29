@@ -50,8 +50,20 @@ namespace _10_RadioactiveMutantVampireBunnies
 
                 if(BunniesGotPlayer(matrix, currRow, currCol))
                 {
-
+                    PrintMatrix(matrix);
                 }
+            }
+        }
+
+        private static void PrintMatrix(string[,] matrix)
+        {
+            for(int r = 0; r < matrix.GetLength(0); r++)
+            {
+                for(int c = 0; c < matrix.GetLength(1); c++)
+                {
+                    Console.Write(matrix[r, c]);
+                }
+                Console.WriteLine();
             }
         }
 
@@ -70,12 +82,16 @@ namespace _10_RadioactiveMutantVampireBunnies
                 }
             }
 
-            for(int i = 0; i < bunniesLocation.Count; i++)
+            int bunniesCount = bunniesLocation.Count;
+
+            for(int i = 0; i < bunniesCount; i++)
             {
                 int[] nextBRow = {1, 0,-1, 0};
                 int[] nextBCol = {0, 1, 0,-1};
                 int bRow = bunniesLocation.Peek().Item1;
                 int bCol = bunniesLocation.Peek().Item2;
+                bunniesLocation.Dequeue();
+
                 if(currRow == bRow && currCol == bCol)
                 {
                     return true;
@@ -84,13 +100,25 @@ namespace _10_RadioactiveMutantVampireBunnies
                 {
                     for(int j = 0; j < nextBCol.Length; j++)
                     {
-                        if (bRow + nextBRow[j] == currRow && bCol + nextBCol[j] == currCol)
+                        try
                         {
-                            return true;
+                            if (bRow + nextBRow[j] == currRow && bCol + nextBCol[j] == currCol)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                matrix[bRow + nextBRow[j], bCol + nextBCol[j]] = "B";
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            continue;
                         }
                     }
                 }
             }
+            return false;
         }
 
         private static Tuple<int, int> FindingStartPosition(string[,] matrix, int[] matrixSize, Tuple<int, int> startPosition)
