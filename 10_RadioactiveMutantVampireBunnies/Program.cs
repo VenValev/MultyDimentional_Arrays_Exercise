@@ -27,34 +27,69 @@ namespace _10_RadioactiveMutantVampireBunnies
         {
             int currRow = startPosition.Item1;
             int currCol = startPosition.Item2;
-            string[] commands = Console.ReadLine().Split();
+            string cmnd = Console.ReadLine();
+            char[] commands = cmnd.ToCharArray(); 
 
             for(int i = 0; i < commands.Length; i++)
             {
-                if (commands[i] == "L")
+                if (commands[i] == 'L')
                 {
+                    matrix[currRow, currCol] = ".";
                     currCol--;
                 }
-                else if (commands[i] == "R")
+                else if (commands[i] == 'R')
                 {
+                    matrix[currRow, currCol] = ".";
                     currCol++;
                 }
-                else if (commands[i] == "U")
+                else if (commands[i] == 'U')
                 {
+                    matrix[currRow, currCol] = ".";
                     currRow--;
                 }
-                else if (commands[i] == "D")
+                else if (commands[i] == 'D')
                 {
+                    matrix[currRow, currCol] = ".";
                     currRow++;
                 }
 
-                if(BunniesGotPlayer(matrix, currRow, currCol))
+                if (PlayerEscaped(matrix, currRow, currCol))
+                {
+                    PrintMatrix(matrix);
+                    Console.WriteLine($"won: {currRow} {currCol}");
+                    break;
+                }
+                else if (matrix[currRow, currCol] == "B")
                 {
                     PrintMatrix(matrix);
                     Console.WriteLine($"dead: {currRow} {currRow}");
                     break;
                 }
+                else if (BunniesGotPlayer(matrix, currRow, currCol))
+                {
+                    PrintMatrix(matrix);
+                    Console.WriteLine($"dead: {currRow} {currRow}");
+                    break;
+                }
+                
+                else
+                {
+                    matrix[currRow, currCol] = "P";
+                }
+                
             }
+        }
+
+        private static bool PlayerEscaped(string[,] matrix, int currRow, int currCol)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            if(currRow >= rows || currCol >= cols || currRow < 0 || currCol < 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         private static void PrintMatrix(string[,] matrix)
@@ -142,10 +177,11 @@ namespace _10_RadioactiveMutantVampireBunnies
         {
             for(int r = 0; r < matrixSize[0]; r++)
             {
-                string[] line = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string l = Console.ReadLine();
+                char[] line = l.ToCharArray();
                 for (int c = 0; c < matrixSize[1]; c++)
                 {
-                    matrix[r, c] = line[c];
+                    matrix[r, c] = line[c].ToString();
                 }
             }
         }
