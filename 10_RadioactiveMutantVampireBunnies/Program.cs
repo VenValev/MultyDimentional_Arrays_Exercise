@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _10_RadioactiveMutantVampireBunnies
@@ -39,9 +41,26 @@ namespace _10_RadioactiveMutantVampireBunnies
                 }
                 else if (commands[i] == "U")
                 {
-
+                    currRow--;
                 }
                 else if (commands[i] == "D")
+                {
+                    currRow++;
+                }
+
+                if(BunniesMove(matrix))
+                {
+
+                }
+            }
+        }
+
+        private static bool BunniesMove(string[,] matrix)
+        {
+            Queue<Tuple<int, int>> bunniesLocation = new Queue<Tuple<int, int>>();
+            for(int r = 0; r < matrix.GetLength(0); r++)
+            {
+                for(int c = 0; c < matrix.GetLength(1); c++)
                 {
 
                 }
