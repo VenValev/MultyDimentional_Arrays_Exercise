@@ -31,11 +31,11 @@ namespace _10_RadioactiveMutantVampireBunnies
             {
                 if (commands[i] == "L")
                 {
-                    
+                    currCol--;
                 }
                 else if (commands[i] == "R")
                 {
-
+                    currCol++;
                 }
                 else if (commands[i] == "U")
                 {
