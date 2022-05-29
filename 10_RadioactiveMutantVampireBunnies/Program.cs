@@ -48,22 +48,31 @@ namespace _10_RadioactiveMutantVampireBunnies
                     currRow++;
                 }
 
-                if(BunniesMove(matrix))
+                if(BunniesGotPlayer(matrix, currRow, currCol))
                 {
 
                 }
             }
         }
 
-        private static bool BunniesMove(string[,] matrix)
+        private static bool BunniesGotPlayer(string[,] matrix, int currRow, int currCol)
         {
             Queue<Tuple<int, int>> bunniesLocation = new Queue<Tuple<int, int>>();
             for(int r = 0; r < matrix.GetLength(0); r++)
             {
                 for(int c = 0; c < matrix.GetLength(1); c++)
                 {
-
+                    if (matrix[r,c] == "B")
+                    {
+                        bunniesLocation.Enqueue(Tuple.Create(r,c));
+                    }
                 }
+            }
+
+            for(int i = 0; i < bunniesLocation.Count; i++)
+            {
+                int bRow = bunniesLocation.Peek().Item1;
+                int bCol = bunniesLocation.Peek().Item2;
             }
         }
 
